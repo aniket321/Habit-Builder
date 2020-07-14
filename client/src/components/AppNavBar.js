@@ -12,6 +12,7 @@ import {
     Button,
     NavbarText
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 
 const AppNavBar = () => {
@@ -45,6 +46,12 @@ const AppNavBar = () => {
                         <NavbarText className="mr-4">Hi, Your name</NavbarText>
                         <Form inline>
                             <Button color="success">Logout</Button>
+                        </Form>
+                        <Form inline>
+                            <Button color="success" href="/login">Login</Button>
+                        </Form>
+                        <Form inline>
+                            <Button color="success" as={Link} to="/register">Register</Button>
                         </Form>
                     </Collapse>
                 </Container>
