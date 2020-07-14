@@ -59,8 +59,6 @@ const NewHabit = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(habitDetails)
-
-
     }
 
     // if (toHome) {

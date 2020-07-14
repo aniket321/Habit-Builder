@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import {
-    Card, Button, CardHeader, CardFooter, CardBody,
-    CardTitle, CardText, Container
+    Card,
+    Button,
+    CardHeader,
+    CardFooter,
+    CardBody,
+    CardTitle,
+    CardText,
+    Container,
+    Badge
 } from 'reactstrap';
 
 const Home = () => {
@@ -12,8 +19,8 @@ const Home = () => {
                     <Card style={{ width: "16rem" }}>
                         <CardHeader>Stats</CardHeader>
                         <CardBody>
-                            <CardTitle>Habits Added: 3</CardTitle>
-                            <CardTitle>Acquired Habits: 3</CardTitle>
+                            <CardTitle>Habits Added: <Badge color="primary">4</Badge></CardTitle>
+                            <CardTitle>Acquired Habits: <Badge color="primary">3</Badge></CardTitle>
                             <Button>Update</Button>
                         </CardBody>
                     </Card>
@@ -32,7 +39,7 @@ const Home = () => {
                     <Card >
                         <CardHeader>Reward Points</CardHeader>
                         <CardBody>
-                            <CardTitle>Reward Points Earned: 100</CardTitle>
+                            <CardTitle>Reward Points Earned: <Badge color="success">100</Badge></CardTitle>
                             <CardText>You gain 10 points on each login and 500 points on acquiring a new Habit!</CardText>
                         </CardBody>
                     </Card>

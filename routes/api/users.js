@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
         const users = await User.find()
         res.send(users)
     } catch (e) {
-        res.status(404).send(e)
+        res.status(500).send(e)
     }
 
 })
@@ -133,6 +133,19 @@ router.post('/increment/:id', async (req, res) => {
     }
 })
 
+//@ GET      /api/users/habits/:id
+//@ DESC:-   will get the habits of user
+//@ Access:- public
+router.get('/habits/:id', async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const user = await User.findById(userId)
+        res.send(user.habits);
+    } catch (e) {
+        res.status(500).send(e)
+    }
+
+})
 
 
 
