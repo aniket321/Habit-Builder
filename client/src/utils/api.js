@@ -73,6 +73,7 @@ export const getUserDetails = async (id) => {
 * @description function to incremet streak of habit
 */
 export const incrementStreak = async (habitId, userId) => {
+    console.log(userId)
     try {
         const response = await axios.post(`${baseUrl}/increment/${habitId}`, {
             id: userId
