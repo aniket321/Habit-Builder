@@ -67,6 +67,8 @@ function App() {
         setLocalStorage(user);
     }
 
+    console.log(userDetails);
+
     return (
         <Router>
             {authedUser.id === null || userDetails === null ? (
@@ -94,7 +96,7 @@ function App() {
                             <Switch>
                                 <Route exact path='/' render={() => (
                                     <Home
-
+                                        userDetails={userDetails}
                                     />
                                 )}
                                 />
@@ -106,7 +108,7 @@ function App() {
                                 />
                                 <Route exact path='/my-habits' render={({ location }) => (
                                     <HabitList
-
+                                        userDetails={userDetails}
                                     />
                                 )}
                                 />

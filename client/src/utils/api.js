@@ -70,6 +70,36 @@ export const getUserDetails = async (id) => {
 
 
 /**
+* @description function to incremet streak of habit
+*/
+export const incrementStreak = async (habitId, userId) => {
+    try {
+        const response = await axios.post(`${baseUrl}/increment/${habitId}`, {
+            id: userId
+        })
+        return response;
+    }
+    catch (error) {
+        return error.response;
+    }
+}
+
+
+/**
+* @description function to habits of a particular user
+*/
+export const getHabits = async (id) => {
+    try {
+        const response = await axios.get(`${baseUrl}/habits/${id}`);
+        return response;
+    }
+    catch (error) {
+        return error.response;
+    }
+}
+
+
+/**
 * @description function to set the localstorage
 */
 export const setLocalStorage = async (user) => {

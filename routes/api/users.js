@@ -49,7 +49,8 @@ router.post('/login', async (req, res) => {
             name: user.name,
             id: user._id,
             rewardPoints: user.rewardPoints,
-            completed: user.completed
+            completed: user.completed,
+            habits: user.habits
         });
     } catch (e) {
         res.status(401).send({ message: "Invalid email or password" })
@@ -166,7 +167,8 @@ router.get('/:id', async (req, res) => {
             name: user.name,
             id: user._id,
             rewardPoints: user.rewardPoints,
-            completed: user.completed
+            completed: user.completed,
+            habits: user.habits
         });
     } catch (e) {
         res.status(500).send(e)

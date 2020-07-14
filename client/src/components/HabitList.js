@@ -13,8 +13,11 @@ import {
     Badge,
     Progress
 } from 'reactstrap';
+import { getHabits } from '../utils/api';
 
-const HabitList = () => {
+const HabitList = (props) => {
+
+    const { userDetails } = props;
 
     const [habitList, setHabitList] = useState([]);
 
@@ -22,9 +25,9 @@ const HabitList = () => {
     * @description function to fetch all Habits of the user
     */
     async function fetchUsers() {
-        const response = await axios.get('http://localhost:5000/api/users/habits/5f0d5b6fdd2cc532e92610ba');
+        const response = await getHabits(userDetails.id);
+        console.log(response);
         if (response.status === 200) {
-            console.log(response.data)
             setHabitList(response.data);
         }
         else {
@@ -42,9 +45,16 @@ const HabitList = () => {
         return (streak / 21) * 100;
     }
 
+    if (habitList.length === 0) {
+        return (
+            <Container className="mt-5 mt-3 d-flex justify-content-center">
+                <h2>No habits added, add habits to view!</h2>
+            </Container>)
+    }
+
     return (
         <Container className="mt-5">
-            {/* <Spinner style={{ width: '3rem', height: '3rem' }} /> */}
+            {/* <Spinner style={{ width: '3rem', height: '3rem' }} className="mt-3  align-items-center" /> */}
             {habitList.map((habit) =>
                 <Card key={habit._id} className="mb-4">
                     <CardHeader>{habit.tag} {habit.isCompleted === true && <Badge color="success">Acquired</Badge>}</CardHeader>

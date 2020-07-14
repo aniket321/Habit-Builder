@@ -10,8 +10,11 @@ import {
     Container,
     Badge
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
-const Home = () => {
+const Home = (props) => {
+    const { userDetails } = props;
+
     return (
         <Container style={{ width: "90%" }}>
             <div className="row mt-5">
@@ -19,9 +22,9 @@ const Home = () => {
                     <Card>
                         <CardHeader>Stats</CardHeader>
                         <CardBody>
-                            <CardTitle>Habits Added: <Badge color="primary">4</Badge></CardTitle>
-                            <CardTitle>Acquired Habits: <Badge color="primary">3</Badge></CardTitle>
-                            <Button>Update</Button>
+                            <CardTitle>Habits Added: <Badge color="primary">{userDetails.habits.length}</Badge></CardTitle>
+                            <CardTitle>Acquired Habits: <Badge color="primary">{userDetails.completed}</Badge></CardTitle>
+                            <Button tag={Link} to="/my-habits">Update</Button>
                         </CardBody>
                     </Card>
                 </div>
@@ -39,8 +42,8 @@ const Home = () => {
                     <Card >
                         <CardHeader>Reward Points</CardHeader>
                         <CardBody>
-                            <CardTitle>Reward Points Earned: <Badge color="success">100</Badge></CardTitle>
-                            <CardText>You gain 10 points on each login and 500 points on acquiring a new Habit!</CardText>
+                            <CardTitle>Reward Points Earned: <Badge color="success">{userDetails.rewardPoints}</Badge></CardTitle>
+                            <CardText>You gain 10 points on each login and 500 points on acquiring a new Habit! Earn more points to top the leaderboard</CardText>
                         </CardBody>
                     </Card>
                 </div>
