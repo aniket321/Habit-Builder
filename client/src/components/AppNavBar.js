@@ -51,7 +51,7 @@ const AppNavBar = () => {
                             <Button color="success" href="/login">Login</Button>
                         </Form>
                         <Form inline>
-                            <Button color="success" as={Link} to="/register">Register</Button>
+                            <Button color="success" href="/register">Register</Button>
                         </Form>
                     </Collapse>
                 </Container>

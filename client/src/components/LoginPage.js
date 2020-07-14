@@ -43,7 +43,7 @@ const Login = (props) => {
     }
 
     return (
-        <Card>
+        <Card style={{ width: "50rem" }}>
             <CardHeader as="h5" style={{ backgroundColor: "#343A40", color: "#FFF" }}>Login</CardHeader>
             <CardBody>
                 <Form onSubmit={handleSubmit}>

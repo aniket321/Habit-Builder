@@ -10,6 +10,7 @@ import NewHabit from './components/NewHabit';
 import HabitList from './components/HabitList';
 import Landing from './components/Landing';
 import Login from './components/LoginPage';
+import Register from './components/Register';
 
 
 function App() {
@@ -25,14 +26,14 @@ function App() {
                     <Switch>
                         <>
                             <AppNavBar />
-                            <Container className="mt-3">
+                            <Container className="mt-3 d-flex justify-content-center">
                                 <Route exact path="/" component={Landing} />
                                 <Route exact path='/login' render={() => (
                                     <Login
                                     />
                                 )}
                                 />
-                                {/* <Route exact path="/register" component={Register} /> */}
+                                <Route exact path="/register" component={Register} />
                             </Container>
                         </>
                     </Switch>
