@@ -15,8 +15,8 @@ const Home = () => {
     return (
         <Container style={{ width: "90%" }}>
             <div className="row mt-5">
-                <div className="col-md-3 col-sm-12 pl-0 pr-0 mb-3">
-                    <Card style={{ width: "16rem" }}>
+                <div className="col-md-3 col-sm-12 pl-0 pr-0 mb-3 mr-2">
+                    <Card style={{ width: "14rem" }}>
                         <CardHeader>Stats</CardHeader>
                         <CardBody>
                             <CardTitle>Habits Added: <Badge color="primary">4</Badge></CardTitle>

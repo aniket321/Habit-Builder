@@ -46,12 +46,12 @@ const HabitList = () => {
         <Container className="mt-5">
             {/* <Spinner style={{ width: '3rem', height: '3rem' }} /> */}
             {habitList.map((habit) =>
-                <Card key={habit._id} className="mb-3">
+                <Card key={habit._id} className="mb-4">
                     <CardHeader>{habit.tag} {habit.isCompleted === true && <Badge color="success">Acquired</Badge>}</CardHeader>
                     <CardBody>
                         <CardTitle>Description:</CardTitle>
                         <CardText>{habit.desc}</CardText>
-                        <CardTitle>Streak: <Badge color="primary">{habit.streak}</Badge></CardTitle>
+                        <CardTitle>Streak: <Badge color="primary">{habit.streak} of 21 days</Badge></CardTitle>
                         <Progress value={calculatePercentage(habit.streak)} className="mb-3">{calculatePercentage(habit.streak)}%</Progress>
                         <Button>Update Streak for Today</Button>
                     </CardBody>
