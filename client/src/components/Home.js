@@ -15,8 +15,8 @@ const Home = () => {
     return (
         <Container style={{ width: "90%" }}>
             <div className="row mt-5">
-                <div className="col-md-3 col-sm-12 pl-0 pr-0 mb-3 mr-2">
-                    <Card style={{ width: "14rem" }}>
+                <div className="col-md-3 col-sm-12 pl-0 pr-0 mb-3">
+                    <Card style={{ width: "16rem" }}>
                         <CardHeader>Stats</CardHeader>
                         <CardBody>
                             <CardTitle>Habits Added: <Badge color="primary">4</Badge></CardTitle>
@@ -25,7 +25,7 @@ const Home = () => {
                         </CardBody>
                     </Card>
                 </div>
-                <div className="col-md-5 col-sm-12 pl-0 pr-0 mb-3">
+                <div className="col-md-5 col-sm-12 pl-0 pr-0 mb-3 mr-4">
                     <Card>
                         <CardHeader>Header</CardHeader>
                         <CardBody>
@@ -35,7 +35,7 @@ const Home = () => {
                         </CardBody>
                     </Card>
                 </div>
-                <div className="col-md-3 col-sm-12 pl-0 pr-0 ml-4">
+                <div className="col-md-3 col-sm-12 pl-0 pr-0">
                     <Card >
                         <CardHeader>Reward Points</CardHeader>
                         <CardBody>
