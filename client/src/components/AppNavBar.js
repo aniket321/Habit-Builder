@@ -16,6 +16,9 @@ import { Link } from 'react-router-dom';
 
 
 const AppNavBar = (props) => {
+
+    const { userDetails } = props;
+
     const [hamBurgerState, setHamBurgerState] = useState(false);
 
     const toggleHamBurger = () => {
@@ -33,33 +36,44 @@ const AppNavBar = (props) => {
         <div>
             <Navbar color="dark" dark expand="sm" className="mb-6">
                 <Container>
-                    <NavbarBrand href="/">Habito</NavbarBrand>
+                    <NavbarBrand tag={Link} to="/">Habito</NavbarBrand>
                     <NavbarToggler onClick={toggleHamBurger} />
                     <Collapse isOpen={hamBurgerState} navbar>
-                        <Nav className="mr-auto" navbar>
-                            <NavItem>
-                                <NavLink href="#">Home</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href="">Add Habit</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href="">My Habits</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href="">LeaderBoard</NavLink>
-                            </NavItem>
-                        </Nav>
-                        <NavbarText className="mr-4">Hi, Your name</NavbarText>
-                        <Form inline>
-                            <Button color="success" onClick={logout} href="/">Logout</Button>
-                        </Form>
-                        <Form inline>
-                            <Button color="success" href="/login">Login</Button>
-                        </Form>
-                        <Form inline>
-                            <Button color="success" href="/register">Register</Button>
-                        </Form>
+                        {userDetails !== null ?
+                            (
+                                <>
+                                    <Nav className="mr-auto" navbar>
+                                        <NavItem>
+                                            <NavLink tag={Link} to="/">Home</NavLink>
+                                        </NavItem>
+                                        <NavItem>
+                                            <NavLink tag={Link} to="/add">Add Habit</NavLink>
+                                        </NavItem>
+                                        <NavItem>
+                                            <NavLink tag={Link} to="/my-habits">My Habits</NavLink>
+                                        </NavItem>
+                                        <NavItem>
+                                            <NavLink href="#">LeaderBoard</NavLink>
+                                        </NavItem>
+                                    </Nav>
+                                    <NavbarText className="mr-4">Hi, {userDetails.name}</NavbarText>
+                                    <Form inline>
+                                        <Button color="success" onClick={logout} href="/">Logout</Button>
+                                    </Form>
+                                </>
+                            ) :
+                            (
+                                <Nav className="ml-auto" navbar>
+                                    <Form inline>
+                                        <Button color="success" href="/login" className="mb-1 mr-2">Login</Button>
+                                    </Form>
+                                    <Form inline>
+                                        <Button color="success" href="/register" className="mb-1">Register</Button>
+                                    </Form>
+                                </Nav>
+                            )
+                        }
+
                     </Collapse>
                 </Container>
             </Navbar>

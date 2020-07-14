@@ -73,7 +73,7 @@ function App() {
                 <div>
                     <Switch>
                         <>
-                            <AppNavBar />
+                            <AppNavBar userDetails={userDetails} />
                             <Container className="mt-3 d-flex justify-content-center">
                                 <Route exact path="/" component={Landing} />
                                 <Route exact path='/login' render={() => (
@@ -89,7 +89,7 @@ function App() {
                 </div>
             ) : (
                     <>
-                        <AppNavBar handleLogout={handleLogout} />
+                        <AppNavBar handleLogout={handleLogout} userDetails={userDetails} />
                         <div className="tab-container">
                             <Switch>
                                 <Route exact path='/' render={() => (
