@@ -15,11 +15,18 @@ import {
 import { Link } from 'react-router-dom';
 
 
-const AppNavBar = () => {
+const AppNavBar = (props) => {
     const [hamBurgerState, setHamBurgerState] = useState(false);
 
     const toggleHamBurger = () => {
         setHamBurgerState(!hamBurgerState);
+    }
+
+    /**
+    * @description function to handle logout button
+    */
+    const logout = () => {
+        props.handleLogout();
     }
 
     return (
@@ -45,7 +52,7 @@ const AppNavBar = () => {
                         </Nav>
                         <NavbarText className="mr-4">Hi, Your name</NavbarText>
                         <Form inline>
-                            <Button color="success">Logout</Button>
+                            <Button color="success" onClick={logout} href="/">Logout</Button>
                         </Form>
                         <Form inline>
                             <Button color="success" href="/login">Login</Button>

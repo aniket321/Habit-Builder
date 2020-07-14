@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText, Card, CardHeader, CardBody, CardTitle } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Card, CardHeader, CardBody, CardTitle, Alert } from 'reactstrap';
 import { Redirect, Link } from 'react-router-dom';
+import { registerUser } from '../utils/api';
 
 const Register = () => {
 
@@ -19,6 +20,12 @@ const Register = () => {
     /**
     * @description state to manage redirect to home page
     */
+    const [toLogin, setToLogin] = useState(false);
+
+    /**
+    * @description state to duplicate email error
+    */
+    const [sameEmailError, setSameEmailError] = useState(false);
 
     /**
     * @description function to handle change on input fields
@@ -64,12 +71,29 @@ const Register = () => {
     */
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(userDetails)
+        const response = await registerUser(userDetails);
+        if (response.status === 201) {
+            alert('Registerd! Please Login to continue')
+            setToLogin(true);
+        }
+        else {
+            if (response.data.e.name === 'MongoError') {
+                setSameEmailError(true);
+            }
+            else {
+                alert('Some error occured please try again');
+            }
 
+        }
+    }
+
+    if (toLogin) {
+        return <Redirect to="/login" />
     }
 
     return (
         <Card style={{ width: "50rem" }}>
+            {sameEmailError === true && <Alert color="danger">User with this email already exists, please try again with some other email</Alert>}
             <CardHeader as="h5" style={{ backgroundColor: "#343A40", color: "#FFF" }}>Register</CardHeader>
             <CardBody>
                 <Form onSubmit={handleSubmit}>

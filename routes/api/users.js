@@ -43,8 +43,14 @@ router.post('/', async (req, res) => {
 router.post('/login', async (req, res) => {
     try {
         const user = await User.findByCredentials(req.body.email, req.body.password)
-        // increase the reward points
-        res.send({ user })
+        user.rewardPoints = await user.rewardPoints + 10;
+        await user.save();
+        res.send({
+            name: user.name,
+            id: user._id,
+            rewardPoints: user.rewardPoints,
+            completed: user.completed
+        });
     } catch (e) {
         res.status(401).send({ message: "Invalid email or password" })
     }
@@ -133,14 +139,35 @@ router.post('/increment/:id', async (req, res) => {
     }
 })
 
+
 //@ GET      /api/users/habits/:id
 //@ DESC:-   will get the habits of user
-//@ Access:- public
+//@ Access:- private
 router.get('/habits/:id', async (req, res) => {
     try {
         const userId = req.params.id;
         const user = await User.findById(userId)
         res.send(user.habits);
+    } catch (e) {
+        res.status(500).send(e)
+    }
+
+})
+
+
+//@ GET      /api/users/:id
+//@ DESC:-   will get details of particular user
+//@ Access:- private
+router.get('/:id', async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const user = await User.findById(userId)
+        res.send({
+            name: user.name,
+            id: user._id,
+            rewardPoints: user.rewardPoints,
+            completed: user.completed
+        });
     } catch (e) {
         res.status(500).send(e)
     }

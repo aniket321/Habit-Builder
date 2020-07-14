@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText, Card, CardHeader, CardBody, CardTitle } from 'reactstrap';
-import { Link } from 'react-router-dom'
-
+import { Button, Form, FormGroup, Label, Input, FormText, Card, CardHeader, CardBody, CardTitle, Alert, Container } from 'reactstrap';
+import { Link, Redirect } from 'react-router-dom';
+import { authenticateUser } from '../utils/api';
 
 
 const Login = (props) => {
@@ -13,6 +13,16 @@ const Login = (props) => {
         email: '',
         password: '',
     })
+
+    /**
+    * @description state to manage redirect to home page
+    */
+    const [toHome, setToHome] = useState(false);
+
+    /**
+    * @description state to manage invalid credentials message
+    */
+    const [invalidCredentials, setInvalidCredentials] = useState(false);
 
     /**
     * @description function to handle changes in the input fields
@@ -38,12 +48,23 @@ const Login = (props) => {
     */
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(loginDetails);
+        const response = await authenticateUser(loginDetails);
+        if (response.status === 200) {
+            props.updateAuthedUser(response.data);
+            setToHome(true);
+        }
+        else {
+            setInvalidCredentials(true);
+        }
+    }
 
+    if (toHome) {
+        return <Redirect to="/" />
     }
 
     return (
         <Card style={{ width: "50rem" }}>
+            {invalidCredentials === true && <Alert color="danger">Invalid email or password</Alert>}
             <CardHeader as="h5" style={{ backgroundColor: "#343A40", color: "#FFF" }}>Login</CardHeader>
             <CardBody>
                 <Form onSubmit={handleSubmit}>
