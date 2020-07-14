@@ -26,7 +26,7 @@ const Home = () => {
                     </Card>
                 </div>
                 <div className="col-md-5 col-sm-12 pl-0 pr-0 mb-3">
-                    <Card >
+                    <Card>
                         <CardHeader>Header</CardHeader>
                         <CardBody>
                             <CardTitle>Special Title Treatment</CardTitle>

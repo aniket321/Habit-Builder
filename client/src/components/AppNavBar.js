@@ -42,9 +42,9 @@ const AppNavBar = () => {
                                 <NavLink href="">LeaderBoard</NavLink>
                             </NavItem>
                         </Nav>
-                        <NavbarText>Hi, Your name</NavbarText>
+                        <NavbarText className="mr-4">Hi, Your name</NavbarText>
                         <Form inline>
-                            <Button color="success" className="ml-4">Logout</Button>
+                            <Button color="success">Logout</Button>
                         </Form>
                     </Collapse>
                 </Container>

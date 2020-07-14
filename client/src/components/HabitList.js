@@ -1,9 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import {
+    Container,
+    Spinner,
+    Card,
+    Button,
+    CardHeader,
+    CardFooter,
+    CardBody,
+    CardTitle,
+    CardText,
+    Badge,
+    Progress
+} from 'reactstrap';
 
 const HabitList = () => {
 
-    const [habitList, setHabitList] = useState({});
+    const [habitList, setHabitList] = useState([]);
 
     /**
     * @description function to fetch all Habits of the user
@@ -24,8 +37,28 @@ const HabitList = () => {
         fetchUsers();
     }, []);
 
+    const calculatePercentage = (streak) => {
+        streak = streak >= 21 ? 21 : streak;
+        return (streak / 21) * 100;
+    }
+
     return (
-        <h1>Habitlist</h1>
+        <Container className="mt-5">
+            {/* <Spinner style={{ width: '3rem', height: '3rem' }} /> */}
+            {habitList.map((habit) =>
+                <Card key={habit._id} className="mb-3">
+                    <CardHeader>{habit.tag} {habit.isCompleted === true && <Badge color="success">Acquired</Badge>}</CardHeader>
+                    <CardBody>
+                        <CardTitle>Description:</CardTitle>
+                        <CardText>{habit.desc}</CardText>
+                        <CardTitle>Streak: <Badge color="primary">{habit.streak}</Badge></CardTitle>
+                        <Progress value={calculatePercentage(habit.streak)} className="mb-3">{calculatePercentage(habit.streak)}%</Progress>
+                        <Button>Update Streak for Today</Button>
+                    </CardBody>
+                </Card>
+            )}
+
+        </Container>
     )
 }
 
