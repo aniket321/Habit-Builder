@@ -9,7 +9,8 @@ import {
     NavLink,
     Container,
     Form,
-    Button
+    Button,
+    NavbarText
 } from 'reactstrap';
 
 
@@ -41,8 +42,9 @@ const AppNavBar = () => {
                                 <NavLink href="">LeaderBoard</NavLink>
                             </NavItem>
                         </Nav>
+                        <NavbarText>Hi, Your name</NavbarText>
                         <Form inline>
-                            <Button color="success">Logout</Button>
+                            <Button color="success" className="ml-4">Logout</Button>
                         </Form>
                     </Collapse>
                 </Container>
