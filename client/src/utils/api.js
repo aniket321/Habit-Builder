@@ -87,6 +87,21 @@ export const incrementStreak = async (habitId, userId) => {
 
 
 /**
+* @description function to add a new habit
+*/
+export const addHabit = async (habitDetails) => {
+    console.log(habitDetails)
+    try {
+        const response = await axios.post(`${baseUrl}/new`, habitDetails);
+        return response;
+    }
+    catch (error) {
+        return error.response;
+    }
+}
+
+
+/**
 * @description function to habits of a particular user
 */
 export const getHabits = async (id) => {

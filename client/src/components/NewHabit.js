@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText, Container, CardHeader, Card } from 'reactstrap';
-//import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import { addHabit } from '../utils/api';
 
-const NewHabit = () => {
+const NewHabit = (props) => {
+
+    const { userDetails } = props;
 
     /**
     * @description state to store data of input fields
@@ -18,14 +21,13 @@ const NewHabit = () => {
     /**
     * @description state to manage redirect to home page
     */
-    //const [toHome, setToHome] = useState(false);
+    const [toMyHabits, setToMyHabits] = useState(false);
 
     /**
     * @description function to handle change on input fields
     */
 
     const handleChange = (e, field) => {
-        //console.log(e.target.value)
         switch (field) {
             case 'tag':
                 setHabitDetails({
@@ -46,6 +48,7 @@ const NewHabit = () => {
                     ...habitDetails,
                     reminder: e.target.value,
                 })
+                break;
 
             default:
                 setHabitDetails(habitDetails)
@@ -58,12 +61,21 @@ const NewHabit = () => {
     */
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(habitDetails)
+        const response = await addHabit({
+            id: userDetails.id,
+            habit: habitDetails,
+        })
+        if (response.status === 200) {
+            setToMyHabits(true);
+        }
+        else {
+            alert('Some error occured while adding new habit, please try again');
+        }
     }
 
-    // if (toHome) {
-    //     return <Redirect to="/" />
-    // }
+    if (toMyHabits) {
+        return <Redirect to="/my-habits" />
+    }
 
     return (
         <Container className="mt-5">

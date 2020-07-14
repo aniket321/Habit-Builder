@@ -54,10 +54,7 @@ const HabitList = (props) => {
     const updateStreak = async (habitId) => {
         console.log(userDetails)
         const response = await incrementStreak(habitId, userDetails.id);
-        if (response.status === 200) {
-            // console.log('updated');
-        }
-        else {
+        if (response.status !== 200) {
             alert('Error occured while updating, please try again');
         }
     }

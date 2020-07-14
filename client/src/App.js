@@ -102,7 +102,7 @@ function App() {
                                 />
                                 <Route exact path='/add' render={() => (
                                     <NewHabit
-
+                                        userDetails={userDetails}
                                     />
                                 )}
                                 />

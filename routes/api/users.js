@@ -147,7 +147,7 @@ router.post('/increment/:id', async (req, res) => {
 router.get('/habits/:id', async (req, res) => {
     try {
         const userId = req.params.id;
-        const user = await User.findById(userId)
+        const user = await User.findById(userId);
         res.send(user.habits);
     } catch (e) {
         res.status(500).send(e)
