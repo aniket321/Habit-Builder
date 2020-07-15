@@ -12,12 +12,8 @@ const Post = require('../../models/Posts');
 router.get('/', async (req, res) => {
     try {
         const posts = await Post.find();
-        let postsObj = {};
-        for (const index in posts) {
-            let postId = posts[index]._id;
-            postsObj[postId] = posts[index];
-        }
-        res.send(postsObj);
+        let postList = posts.sort((a, b) => b.timestamp - a.timestamp);
+        res.send(postList);
     } catch (e) {
         res.status(500).send(e)
     }
