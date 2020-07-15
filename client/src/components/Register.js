@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText, Card, CardHeader, CardBody, CardTitle, Alert } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Card, CardHeader, CardBody, CardTitle, Alert, Spinner, Container } from 'reactstrap';
 import { Redirect, Link } from 'react-router-dom';
 import { registerUser } from '../utils/api';
 
@@ -26,6 +26,8 @@ const Register = () => {
     * @description state to duplicate email error
     */
     const [sameEmailError, setSameEmailError] = useState(false);
+
+    const [loading, setLoading] = useState(false);
 
     /**
     * @description function to handle change on input fields
@@ -71,9 +73,11 @@ const Register = () => {
     */
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
         const response = await registerUser(userDetails);
         if (response.status === 201) {
             alert('Registerd! Please Login to continue')
+            setLoading(false);
             setToLogin(true);
         }
         else {
@@ -83,8 +87,16 @@ const Register = () => {
             else {
                 alert('Some error occured please try again');
             }
-
+            setLoading(false);
         }
+    }
+
+    if (loading) {
+        return (
+            <Container className="mt-5 mt-3 d-flex justify-content-center">
+                <Spinner style={{ width: '3rem', height: '3rem' }} className="mt-3  align-items-center" />
+            </Container>
+        )
     }
 
     if (toLogin) {
