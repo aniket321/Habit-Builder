@@ -11,8 +11,13 @@ const Post = require('../../models/Posts');
 //@ Access:- public
 router.get('/', async (req, res) => {
     try {
-        const posts = await Post.find()
-        res.send(posts)
+        const posts = await Post.find();
+        let postsObj = {};
+        for (const index in posts) {
+            let postId = posts[index]._id;
+            postsObj[postId] = posts[index];
+        }
+        res.send(postsObj);
     } catch (e) {
         res.status(500).send(e)
     }
