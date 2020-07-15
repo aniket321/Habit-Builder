@@ -51,10 +51,29 @@ const HabitList = (props) => {
     }
 
     const updateStreak = async (habitId) => {
-        console.log(userDetails)
+        // console.log(userDetails)
+        // const response = await incrementStreak(habitId, userDetails.id);
+        // if (response.status !== 200) {
+        //     alert('Error occured while updating, please try again');
+        // }
+        let habitsObj = [];
+        for (const index in habitList) {
+            if (habitId === habitList[index]._id) {
+                habitList[index].streak += 1;
+            }
+            habitsObj.push(habitList[index]);
+        }
+        setHabitList(habitsObj);
         const response = await incrementStreak(habitId, userDetails.id);
         if (response.status !== 200) {
             alert('Error occured while updating, please try again');
+            for (const index in habitList) {
+                if (habitId === habitList[index]._id) {
+                    habitList[index].streak -= 1;
+                }
+                habitsObj.push(habitList[index]);
+            }
+            setHabitList(habitsObj);
         }
     }
 
@@ -83,7 +102,7 @@ const HabitList = (props) => {
                         <CardText>{habit.desc}</CardText>
                         <CardTitle>Streak: <Badge color="primary">{habit.streak} of 21 days</Badge></CardTitle>
                         <Progress value={calculatePercentage(habit.streak)} className="mb-3">{calculatePercentage(habit.streak)} %</Progress>
-                        <Button onClick={() => updateStreak(habit._id)} href="/my-habits">Update Streak for Today</Button>
+                        <Button onClick={() => updateStreak(habit._id)}>Update Streak for Today</Button>
                         {habit.isCompleted === true &&
                             <Button
                                 tag={Link}
