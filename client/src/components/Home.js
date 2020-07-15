@@ -81,8 +81,8 @@ const Home = (props) => {
                         <Card>
                             <CardHeader className="bg-info text-white">Stats</CardHeader>
                             <CardBody>
-                                <CardTitle>Habits Added: <Badge color="primary">{userDetails.habits.length}</Badge></CardTitle>
-                                <CardTitle>Acquired Habits: <Badge color="primary">{userDetails.completed}</Badge></CardTitle>
+                                <CardTitle>Habits Added: <Badge color="success">{userDetails.habits.length}</Badge></CardTitle>
+                                <CardTitle>Acquired Habits: <Badge color="success">{userDetails.completed}</Badge></CardTitle>
                                 <Button tag={Link} to="/my-habits">Update</Button>
                             </CardBody>
                         </Card>
@@ -103,10 +103,10 @@ const Home = (props) => {
                     </div>
                     <div className="col-md-3 col-sm-12 pl-0 pr-0 mr-4">
                         <Card >
-                            <CardHeader>Reward Points</CardHeader>
+                            <CardHeader className="bg-info text-white">Reward Points</CardHeader>
                             <CardBody>
                                 <CardTitle>Reward Points Earned: <Badge color="success">{userDetails.rewardPoints}</Badge></CardTitle>
-                                <CardText>You gain 10 points on each login and 500 points on acquiring a new Habit! Earn more points to top the leaderboard</CardText>
+                                <CardText>You gain 10 points on each login and 500 points on acquiring a new Habit! Earn more points to top the leaderboard.</CardText>
                             </CardBody>
                         </Card>
                     </div>
