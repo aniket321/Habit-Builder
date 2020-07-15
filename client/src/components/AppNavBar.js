@@ -69,10 +69,10 @@ const AppNavBar = (props) => {
                             (
                                 <Nav className="ml-auto" navbar>
                                     <Form inline>
-                                        <Button color="success" href="/login" className="mb-1 mr-2">Login</Button>
+                                        <Button color="success" tag={Link} to="/login" className="mb-1 mr-2">Login</Button>
                                     </Form>
                                     <Form inline>
-                                        <Button color="success" href="/register" className="mb-1">Register</Button>
+                                        <Button color="success" tag={Link} to="/register" className="mb-1">Register</Button>
                                     </Form>
                                 </Nav>
                             )
