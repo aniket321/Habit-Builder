@@ -79,7 +79,7 @@ const Home = (props) => {
                 <div className="row mt-5">
                     <div className="col-md-3 col-sm-12 pl-0 pr-0 mb-3 mr-4">
                         <Card>
-                            <CardHeader>Stats</CardHeader>
+                            <CardHeader className="bg-info text-white">Stats</CardHeader>
                             <CardBody>
                                 <CardTitle>Habits Added: <Badge color="primary">{userDetails.habits.length}</Badge></CardTitle>
                                 <CardTitle>Acquired Habits: <Badge color="primary">{userDetails.completed}</Badge></CardTitle>

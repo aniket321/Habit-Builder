@@ -13,6 +13,7 @@ import Login from './components/LoginPage';
 import Register from './components/Register';
 import NewPost from './components/NewPost';
 import LeaderBoard from './components/LeaderBoard';
+import Error from './components/Error';
 
 import { getAuthedUser, getUserDetails, setLocalStorage } from './utils/api';
 
@@ -90,21 +91,20 @@ function App() {
         <Router>
             {authedUser.id === null || userDetails === null ? (
                 <div className="App">
-                    <Switch>
-                        <>
-                            <AppNavBar userDetails={userDetails} />
-                            <Container className="mt-3 d-flex justify-content-center">
-                                <Route exact path="/" component={Landing} />
-                                <Route exact path='/login' render={() => (
-                                    <Login
-                                        updateAuthedUser={updateAuthedUser}
-                                    />
-                                )}
+                    <AppNavBar userDetails={userDetails} />
+                    <Container className="mt-3 d-flex justify-content-center">
+                        <Switch>
+                            <Route exact path="/" component={Landing} />
+                            <Route exact path='/login' render={() => (
+                                <Login
+                                    updateAuthedUser={updateAuthedUser}
                                 />
-                                <Route exact path="/register" component={Register} />
-                            </Container>
-                        </>
-                    </Switch>
+                            )}
+                            />
+                            <Route exact path="/register" component={Register} />
+                            <Route component={Error} />
+                        </Switch>
+                    </Container>
                 </div>
             ) : (
                     <div className="App">
@@ -138,12 +138,11 @@ function App() {
                                 )}
                                 />
                                 <Route exact path="/leaderboard" component={LeaderBoard} />
-                                {/* <Route component={Error} /> */}
+                                <Route component={Error} />
                             </Switch>
                         </div>
                     </div>
                 )}
-
         </Router>
     );
 }
