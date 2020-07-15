@@ -7,9 +7,9 @@ const Example = (props) => {
         <div>
             <Jumbotron>
                 <h1 className="display-3">Habito!</h1>
-                <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.</p>
+                <p className="lead">"Depending on what they are, our habits will either make us or break us. We become what we repeatedly do.” ―Sean Covey</p>
                 <hr className="my-2" />
-                <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+                <p>Let's build your habit together with our community!</p>
                 <p className="lead">
                     <Button color="primary" tag={Link} to="/register">Get Started!</Button>
                 </p>
