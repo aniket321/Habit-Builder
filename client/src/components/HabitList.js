@@ -51,15 +51,13 @@ const HabitList = (props) => {
     }
 
     const updateStreak = async (habitId) => {
-        // console.log(userDetails)
-        // const response = await incrementStreak(habitId, userDetails.id);
-        // if (response.status !== 200) {
-        //     alert('Error occured while updating, please try again');
-        // }
         let habitsObj = [];
         for (const index in habitList) {
             if (habitId === habitList[index]._id) {
                 habitList[index].streak += 1;
+                if (habitList[index].streak === 21) {
+                    habitList[index].isCompleted = true;
+                }
             }
             habitsObj.push(habitList[index]);
         }
