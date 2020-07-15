@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText, Card, CardHeader, CardBody, CardTitle, Alert, Spinner, Container } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Card, CardHeader, CardBody, Alert, Spinner, Container } from 'reactstrap';
 import { Redirect, Link } from 'react-router-dom';
 import { registerUser } from '../utils/api';
 

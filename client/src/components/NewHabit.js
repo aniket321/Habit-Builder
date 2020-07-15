@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText, Container, CardHeader, Card } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Container, CardHeader, Card } from 'reactstrap';
 import { Redirect } from 'react-router-dom';
 import { addHabit } from '../utils/api';
 

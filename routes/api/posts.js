@@ -47,7 +47,6 @@ router.post('/like', async (req, res) => {
         await posts.save();
         res.send(posts);
     } catch (e) {
-        console.log(e);
         res.status(500).send(e)
     }
 })

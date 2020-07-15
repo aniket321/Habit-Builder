@@ -3,16 +3,11 @@ import {
     Container,
     Spinner,
     Card,
-    Button,
     CardHeader,
-    CardFooter,
     CardBody,
     CardTitle,
-    CardText,
     Badge,
-    Progress
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
 import { getUsers } from '../utils/api';
 
 
