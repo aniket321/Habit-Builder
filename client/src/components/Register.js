@@ -136,6 +136,7 @@ const Register = () => {
                             onChange={(e) => handleChange(e, 'mobile')}
                             placeholder="Enter Mobile Number"
                             maxLength="10"
+                            minLength="10"
                         />
                     </FormGroup>
 
