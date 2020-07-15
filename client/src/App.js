@@ -11,6 +11,7 @@ import HabitList from './components/HabitList';
 import Landing from './components/Landing';
 import Login from './components/LoginPage';
 import Register from './components/Register';
+import NewPost from './components/NewPost';
 
 import { getAuthedUser, getUserDetails, setLocalStorage } from './utils/api';
 
@@ -124,6 +125,14 @@ function App() {
                                 <Route exact path='/my-habits' render={({ location }) => (
                                     <HabitList
                                         userDetails={userDetails}
+                                        location={location}
+                                    />
+                                )}
+                                />
+                                <Route exact path='/share' render={({ location }) => (
+                                    <NewPost
+                                        userDetails={userDetails}
+                                        location={location}
                                     />
                                 )}
                                 />

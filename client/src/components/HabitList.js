@@ -84,6 +84,21 @@ const HabitList = (props) => {
                         <CardTitle>Streak: <Badge color="primary">{habit.streak} of 21 days</Badge></CardTitle>
                         <Progress value={calculatePercentage(habit.streak)} className="mb-3">{calculatePercentage(habit.streak)} %</Progress>
                         <Button onClick={() => updateStreak(habit._id)} href="/my-habits">Update Streak for Today</Button>
+                        {habit.isCompleted === true &&
+                            <Button
+                                tag={Link}
+                                to={
+                                    {
+                                        pathname: "/share",
+                                        state: {
+                                            tag: habit.tag
+                                        }
+                                    }
+                                }
+                                className="ml-3"
+                            >
+                                Share
+                            </Button>}
                     </CardBody>
                 </Card>
             )}

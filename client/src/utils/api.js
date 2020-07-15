@@ -100,6 +100,20 @@ export const likePost = async (postId) => {
 }
 
 
+/**
+* @description function to share a new post
+*/
+export const sharePost = async (post) => {
+    try {
+        const response = await axios.post(postBaseUrl, post);
+        return response;
+    }
+    catch (error) {
+        return error.response;
+    }
+}
+
+
 
 /**
 * @description function to incremet streak of habit
