@@ -31,7 +31,6 @@ const HabitList = (props) => {
     async function fetchUsers() {
         await setLoading(true)
         const response = await getHabits(userDetails.id);
-        console.log(response);
         if (response.status === 200) {
             setHabitList(response.data);
             setLoading(false);

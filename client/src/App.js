@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { Container } from 'reactstrap';
+import { Container, Spinner } from 'reactstrap';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import AppNavBar from './components/AppNavBar';
@@ -21,12 +21,13 @@ function App() {
         id: null,
     })
 
-
-    const [userDetails, setUserDetails] = useState(null)
+    const [userDetails, setUserDetails] = useState(null);
+    const [loading, setLoading] = useState(true);
 
 
     useEffect(() => {
         async function getUser() {
+            await setLoading(true);
             let user = await getAuthedUser();
             await setAuthedUser(user);
             if (user.id === null) {
@@ -34,8 +35,15 @@ function App() {
             }
             else {
                 let userInfo = await getUserDetails(user.id);
-                await setUserDetails(userInfo);
+                if (userInfo) {
+                    await setUserDetails(userInfo);
+                }
+                else {
+                    await setUserDetails(null)
+                }
+
             }
+            await setLoading(false);
 
         }
         getUser();
@@ -67,7 +75,14 @@ function App() {
         setLocalStorage(user);
     }
 
-    console.log(userDetails);
+    if (loading) {
+        return (
+            <Container className="mt-5 mt-3 d-flex justify-content-center">
+                <Spinner style={{ width: '3rem', height: '3rem' }} className="mt-3  align-items-center" />
+            </Container>
+        )
+    }
+
 
     return (
         <Router>

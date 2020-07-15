@@ -125,6 +125,7 @@ router.post('/increment/:id', async (req, res) => {
                 user.habits[index].streak += 1;
                 if (user.habits[index].streak === 21) {
                     user.habits[index].isCompleted = true;
+                    user.completed += 1;
                     user.rewardPoints += 500;
                 }
                 habitIdNotFound = false;
@@ -148,7 +149,8 @@ router.get('/habits/:id', async (req, res) => {
     try {
         const userId = req.params.id;
         const user = await User.findById(userId);
-        res.send(user.habits);
+        let habitList = user.habits.sort((a, b) => b.timestamp - a.timestamp);
+        res.send(habitList);
     } catch (e) {
         res.status(500).send(e)
     }
