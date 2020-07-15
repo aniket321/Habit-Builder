@@ -57,7 +57,7 @@ const AppNavBar = (props) => {
                                             <NavLink tag={Link} to="/my-habits">My Habits</NavLink>
                                         </NavItem>
                                         <NavItem>
-                                            <NavLink href="#">LeaderBoard</NavLink>
+                                            <NavLink tag={Link} to="/leaderboard">LeaderBoard</NavLink>
                                         </NavItem>
                                     </Nav>
                                     <NavbarText className="mr-4">Hi, {userDetails.name}</NavbarText>

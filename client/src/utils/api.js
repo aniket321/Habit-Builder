@@ -71,6 +71,20 @@ export const getUserDetails = async (id) => {
 
 
 /**
+* @description function to fetch all users
+*/
+export const getUsers = async () => {
+    try {
+        const response = await axios.get(baseUrl)
+        return response;
+    }
+    catch (error) {
+        return error.response;
+    }
+}
+
+
+/**
 * @description function to get all posts
 */
 export const getPosts = async () => {

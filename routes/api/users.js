@@ -6,13 +6,14 @@ const User = require('../../models/Users');
 
 //routes
 
-//@ GET    /api/users
-//@ DESC:- will send back the result of all user
-//@ Access:-public
+//@ GET      /api/users
+//@ DESC:-   will send back the result of all user
+//@ Access:- public
 router.get('/', async (req, res) => {
     try {
         const users = await User.find()
-        res.send(users)
+        let usersList = users.sort((a, b) => b.rewardPoints - a.rewardPoints);
+        res.send(usersList);
     } catch (e) {
         res.status(500).send(e)
     }

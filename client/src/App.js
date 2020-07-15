@@ -12,6 +12,7 @@ import Landing from './components/Landing';
 import Login from './components/LoginPage';
 import Register from './components/Register';
 import NewPost from './components/NewPost';
+import LeaderBoard from './components/LeaderBoard';
 
 import { getAuthedUser, getUserDetails, setLocalStorage } from './utils/api';
 
@@ -136,6 +137,7 @@ function App() {
                                     />
                                 )}
                                 />
+                                <Route exact path="/leaderboard" component={LeaderBoard} />
                                 {/* <Route component={Error} /> */}
                             </Switch>
                         </div>
