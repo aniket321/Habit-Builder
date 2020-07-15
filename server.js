@@ -8,6 +8,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const userRouter = require('./routes/api/users');
+const postRouter = require('./routes/api/posts');
 
 //DB configuration
 const db = require('./config/default').mongoURI;
@@ -24,6 +25,7 @@ mongoose
 
 // Routes file
 app.use('/api/users', userRouter);
+app.use('/api/posts', postRouter);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server running on port ${port}`));
