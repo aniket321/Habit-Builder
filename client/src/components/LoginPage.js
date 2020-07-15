@@ -105,7 +105,7 @@ const Login = (props) => {
                             placeholder="Enter password"
                         />
                     </FormGroup>
-                    <Button>Submit</Button>
+                    <Button className="mb-2">Submit</Button>
                 </Form>
                 <Link to={`/register`} style={{ color: "black", textDecoration: "underline" }}>
                     Not an existing user, Register here!

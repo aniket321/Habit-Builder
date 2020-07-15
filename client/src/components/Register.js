@@ -153,7 +153,7 @@ const Register = () => {
                             minLength="8"
                         />
                     </FormGroup>
-                    <Button>Submit</Button>
+                    <Button className="mb-2">Submit</Button>
                 </Form>
                 <Link to={`/`} style={{ color: "black", textDecoration: "underline" }}>
                     Go Home!
