@@ -36,7 +36,17 @@
 
     • Clone the repository and run npm install to install the dependencies.
       
-    • cd client && npm install
+    • cd client && npm install.
 
-    • Go to the root folder of the app and execute npm run dev
+    • Go to the root folder of the app and execute npm run dev to run the application.
+
+## Screenshots:
+
+<img src="/screenshots/landing.png" width="100%" height="500">
+<img src="/screenshots/login.png" width="100%" height="500">
+<img src="/screenshots/register.png" width="100%" height="500">
+<img src="/screenshots/home.png" width="100%" height="500">
+<img src="/screenshots/my-habits.png" width="100%" height="500">
+<img src="/screenshots/new-habit.png" width="100%" height="500">
+<img src="/screenshots/leaderboard.png" width="100%" height="500">
 
