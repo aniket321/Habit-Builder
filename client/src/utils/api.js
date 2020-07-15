@@ -1,5 +1,6 @@
 import axios from 'axios';
 const baseUrl = 'http://localhost:5000/api/users';
+const postBaseUrl = 'http://localhost:5000/api/posts'
 
 
 /**
@@ -70,10 +71,40 @@ export const getUserDetails = async (id) => {
 
 
 /**
+* @description function to get all posts
+*/
+export const getPosts = async () => {
+    try {
+        const response = await axios.get(postBaseUrl);
+        return response;
+    }
+    catch (error) {
+        return error.response;
+    }
+}
+
+
+/**
+* @description function to like a post
+*/
+export const likePost = async (postId) => {
+    try {
+        const response = await axios.post(`${postBaseUrl}/like`, {
+            id: postId
+        })
+        return response;
+    }
+    catch (error) {
+        return error.response;
+    }
+}
+
+
+
+/**
 * @description function to incremet streak of habit
 */
 export const incrementStreak = async (habitId, userId) => {
-    console.log(userId)
     try {
         const response = await axios.post(`${baseUrl}/increment/${habitId}`, {
             id: userId

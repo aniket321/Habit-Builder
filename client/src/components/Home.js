@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Card,
     Button,
@@ -8,12 +8,65 @@ import {
     CardTitle,
     CardText,
     Container,
-    Badge
+    Badge,
+    Spinner
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
+import { getPosts, likePost } from '../utils/api';
+
 const Home = (props) => {
     const { userDetails } = props;
+
+    const [loading, setLoading] = useState(true);
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        async function getPostList() {
+            await setLoading(true);
+            const response = await getPosts();
+            if (response.status === 200) {
+                setPosts(response.data)
+            }
+            else {
+                alert('some error occured while fetching all the posts, please try again');
+            }
+            await setLoading(false);
+
+        }
+        getPostList();
+    }, [])
+
+
+    const onLike = async (id) => {
+        let postsObj = [];
+        for (const index in posts) {
+            if (id === posts[index]._id) {
+                posts[index].likes += 1;
+            }
+            postsObj.push(posts[index]);
+        }
+        setPosts(postsObj);
+        const response = await likePost(id);
+        if (response.status !== 200) {
+            alert('error while liking the post, please try again');
+            for (const index in posts) {
+                if (id === posts[index]._id) {
+                    posts[index].likes -= 1;
+                }
+                postsObj.push(posts[index]);
+            }
+            setPosts(postsObj);
+        }
+    }
+
+    if (loading) {
+        return (
+            <Container className="mt-5 mt-3 d-flex justify-content-center">
+                <Spinner style={{ width: '3rem', height: '3rem' }} className="mt-3  align-items-center" />
+            </Container>
+        )
+    }
 
     if (!userDetails) {
         return <h3>Something went wrong, Please reload</h3>
@@ -35,14 +88,18 @@ const Home = (props) => {
                         </Card>
                     </div>
                     <div className="col-md-5 col-sm-12 pl-0 pr-0 mb-3 mr-4">
-                        <Card>
-                            <CardHeader>Header</CardHeader>
-                            <CardBody>
-                                <CardTitle>Special Title Treatment</CardTitle>
-                                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                                <Button>Go somewhere</Button>
-                            </CardBody>
-                        </Card>
+                        {posts.map((post) =>
+                            <Card className="mb-4" key={post._id}>
+                                <CardHeader>{post.tag}</CardHeader>
+                                <CardBody>
+                                    <CardTitle>{post.author} says:</CardTitle>
+                                    <CardText>{post.desc}</CardText>
+                                </CardBody>
+                                <CardFooter>
+                                    <Button size="sm" color="danger" onClick={() => onLike(post._id)}>Like {post.likes > 0 && <Badge color="light" size="bg">{post.likes}</Badge>}</Button>
+                                </CardFooter>
+                            </Card>
+                        )}
                     </div>
                     <div className="col-md-3 col-sm-12 pl-0 pr-0 mr-4">
                         <Card >
