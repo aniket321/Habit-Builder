@@ -1,6 +1,6 @@
 import axios from 'axios';
-const baseUrl = 'http://localhost:5000/api/users';
-const postBaseUrl = 'http://localhost:5000/api/posts'
+const baseUrl = '/api/users';
+const postBaseUrl = '/api/posts'
 
 
 /**
