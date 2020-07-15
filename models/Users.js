@@ -74,7 +74,6 @@ const userSchema = new Schema({
 });
 
 userSchema.statics.findByCredentials = async (email, password) => {
-    console.log(password)
     const user = await User.findOne({ email })
     if (!user) {
         throw new Error('Invalid email/password')

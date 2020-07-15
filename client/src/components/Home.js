@@ -18,9 +18,20 @@ import { getPosts, likePost } from '../utils/api';
 const Home = (props) => {
     const { userDetails } = props;
 
+    /**
+    * @description state to manage the spinner to display loading
+    */
     const [loading, setLoading] = useState(true);
+
+    /**
+    * @description state to store the posts
+    */
     const [posts, setPosts] = useState([]);
 
+
+    /**
+    * @description to load the posts
+    */
     useEffect(() => {
         async function getPostList() {
             await setLoading(true);
@@ -38,6 +49,9 @@ const Home = (props) => {
     }, [])
 
 
+    /**
+    * @description function to like post
+    */
     const onLike = async (id) => {
         let postsObj = [];
         for (const index in posts) {

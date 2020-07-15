@@ -19,8 +19,15 @@ const HabitList = (props) => {
 
     const { userDetails } = props;
 
+    /**
+   * @description state to store the habits of user
+   */
     const [habitList, setHabitList] = useState([]);
 
+
+    /**
+   * @description state to manage the spinner to display loading
+   */
     const [loading, setLoading] = useState(true);
 
     /**
@@ -34,7 +41,6 @@ const HabitList = (props) => {
             setLoading(false);
         }
         else {
-            // onError(response.data)
             alert('Some Error occured! Try again');
         }
     }

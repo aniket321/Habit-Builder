@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
 
 
 //@ POST     /api/posts/like
-//@ DESC:-   will add a new post
+//@ DESC:-   will like a post
 //@ Access:- private
 router.post('/like', async (req, res) => {
     try {
