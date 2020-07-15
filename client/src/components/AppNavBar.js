@@ -48,7 +48,7 @@ const AppNavBar = (props) => {
                                 <>
                                     <Nav className="mr-auto" navbar>
                                         <NavItem>
-                                            <NavLink tag={Link} to="/">Home</NavLink>
+                                            <NavLink href="/">Home</NavLink>
                                         </NavItem>
                                         <NavItem>
                                             <NavLink tag={Link} to="/add">Add Habit</NavLink>

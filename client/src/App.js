@@ -89,7 +89,7 @@ function App() {
     return (
         <Router>
             {authedUser.id === null || userDetails === null ? (
-                <div>
+                <div className="App">
                     <Switch>
                         <>
                             <AppNavBar userDetails={userDetails} />
@@ -107,7 +107,7 @@ function App() {
                     </Switch>
                 </div>
             ) : (
-                    <>
+                    <div className="App">
                         <AppNavBar handleLogout={handleLogout} userDetails={userDetails} />
                         <div className="tab-container">
                             <Switch>
@@ -141,7 +141,7 @@ function App() {
                                 {/* <Route component={Error} /> */}
                             </Switch>
                         </div>
-                    </>
+                    </div>
                 )}
 
         </Router>
