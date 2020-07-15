@@ -62,7 +62,7 @@ const AppNavBar = (props) => {
                                     </Nav>
                                     <NavbarText className="mr-4">Hi, {userDetails.name}</NavbarText>
                                     <Form inline>
-                                        <Button color="success" onClick={logout} href="/">Logout </Button>
+                                        <Button color="success" onClick={logout} tag={Link} to="/">Logout </Button>
                                     </Form>
                                 </>
                             ) :

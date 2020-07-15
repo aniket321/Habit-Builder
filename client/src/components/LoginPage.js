@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText, Card, CardHeader, CardBody, CardTitle, Alert, Container } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Card, CardHeader, CardBody, CardTitle, Alert, Container, Spinner } from 'reactstrap';
 import { Link, Redirect } from 'react-router-dom';
 import { authenticateUser } from '../utils/api';
 
@@ -13,6 +13,8 @@ const Login = (props) => {
         email: '',
         password: '',
     })
+
+    const [loading, setLoading] = useState(false);
 
     /**
     * @description state to manage redirect to home page
@@ -48,14 +50,25 @@ const Login = (props) => {
     */
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
         const response = await authenticateUser(loginDetails);
         if (response.status === 200) {
             props.updateAuthedUser(response.data);
+            setLoading(false);
             setToHome(true);
         }
         else {
             setInvalidCredentials(true);
+            setLoading(false);
         }
+    }
+
+    if (loading) {
+        return (
+            <Container className="mt-5 mt-3 d-flex justify-content-center">
+                <Spinner style={{ width: '3rem', height: '3rem' }} className="mt-3  align-items-center" />
+            </Container>
+        )
     }
 
     if (toHome) {
