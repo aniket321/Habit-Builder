@@ -16,10 +16,6 @@
       
     • If you are not a registered user, register first and then login.
       
-    • You can use following id password to login:
-      id: rohan@gmail.com
-      password: rohan123
-      
     • Once loggedin user is displayed a dashboard with habits statistics like habits added, acquired habits and reward points earned.
       
     • Also on the Home page user can view posts shared by others.
