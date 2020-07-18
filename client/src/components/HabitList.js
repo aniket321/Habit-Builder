@@ -49,11 +49,17 @@ const HabitList = (props) => {
         fetchUsers();
     }, []);
 
+     /**
+    * @description function to calculate the percentage of the progress bar
+    */
     const calculatePercentage = (streak) => {
         streak = streak >= 21 ? 21 : streak;
         return Math.floor((streak / 21) * 100);
     }
 
+     /**
+    * @description function to update the streak of habit
+    */
     const updateStreak = async (habitId) => {
         let habitsObj = [];
         for (const index in habitList) {

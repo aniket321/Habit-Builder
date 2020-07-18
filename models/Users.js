@@ -67,10 +67,9 @@ const userSchema = new Schema({
         }
     }],
     posts: [{
-        id: {
-            type: String,
-        }
-    }]
+        type: String,
+        required: true,
+    }],
 });
 
 userSchema.statics.findByCredentials = async (email, password) => {
